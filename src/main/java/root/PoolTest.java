@@ -18,6 +18,7 @@ public class PoolTest {
 	
 	@PostConstruct
 	public void test(){
+		System.out.println("=====JedisPool的测试=======");
 		//获取连接
 		Jedis jedis = jedisPool.getResource();
 		

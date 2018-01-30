@@ -23,8 +23,20 @@
     <!-- redis连接池的配置 -->
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool"> 
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"/> 
-        <constructor-arg name="host" value="${redis.host}"/> 
+        <constructor-arg name="host" value="${redis.ip}"/> 
         <constructor-arg name="port" value="${redis.port}"/> 
+    </bean>
+    
+    <!-- redis数据库连接配置 --> 
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"> 
+        <property name="hostName" value="${redis.ip}" /> 
+        <property name="port" value="${redis.port}" /> 
+        <property name="poolConfig" ref="jedisPoolConfig" /> 
+    </bean> 
+    
+    <!-- redisTemplate配置，redisTemplate是对Jedis的对redis操作的扩展，有更多的操作，封装使操作更便捷 --> 
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"> 
+        <property name="connectionFactory" ref="jedisConnectionFactory" /> 
     </bean>
 	
 </beans>
