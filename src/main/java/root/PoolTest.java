@@ -18,18 +18,18 @@ public class PoolTest {
 	
 	@PostConstruct
 	public void test(){
-		System.out.println("=====JedisPool的测试=======");
-		//获取连接
-		Jedis jedis = jedisPool.getResource();
-		
-		//获取所有的key
-		Set<String> keySet = jedis.keys("*");
-		for (String key : keySet){
-			System.out.println(key + ":" + jedis.type(key));
-		}
-		
-		//释放连接
-		jedis.close();
+//		System.out.println("=====JedisPool的测试=======");
+//		//获取连接
+//		Jedis jedis = jedisPool.getResource();
+//		
+//		//获取所有的key
+//		Set<String> keySet = jedis.keys("*");
+//		for (String key : keySet){
+//			System.out.println(key + ":" + jedis.type(key));
+//		}
+//		
+//		//释放连接
+//		jedis.close();
 	}
 }
 
